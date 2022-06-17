@@ -5,14 +5,16 @@ import {
 	LoginDescription,
 	LoginForm
 } from '@wuespace/telestion-client-common';
+import {useBreakpoints} from '@wuespace/telestion-client-common'
 
 export function LoginPage() {
+	const {isBase, isSm} = useBreakpoints();
 	return (
 		<TCLoginPage>
-			<LoginLogo />
-			<LoginTitle />
-			<LoginDescription />
-			<LoginForm initialServerURL="http://localhost:9870/bridge" />
+			{ isBase || isSm ? <></> : <LoginLogo/> }
+			<LoginTitle/>
+			<LoginDescription/>
+			<LoginForm initialServerURL="http://localhost:9870/bridge"/>
 		</TCLoginPage>
 	);
 }
