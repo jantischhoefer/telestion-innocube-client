@@ -8,28 +8,28 @@ import {
 	NotificationAction,
 	ColorSchemeAction,
 	FullscreenAction,
-	AccountControls
+	AccountControls,
+	useBreakpoints
 } from '@wuespace/telestion-client-common';
 
 export function Header() {
+	const {isBase, isSm} = useBreakpoints();
+
 	return (
 		<TCHeader
 			left={
-				<>
-					<AppLogo />
-					<NavBar />
-				</>
+				isBase || isSm ? <AppLogo/> : <><AppLogo/><NavBar/></>
 			}
-			center={<DashboardPicker />}
+			center={<DashboardPicker/>}
 			right={
 				<>
-					<ConnectionIndicator />
+					<ConnectionIndicator/>
 					<Actions>
-						<NotificationAction />
-						<ColorSchemeAction />
-						<FullscreenAction />
+						<NotificationAction/>
+						<ColorSchemeAction/>
+						<FullscreenAction/>
 					</Actions>
-					<AccountControls />
+					<AccountControls/>
 				</>
 			}
 		/>
