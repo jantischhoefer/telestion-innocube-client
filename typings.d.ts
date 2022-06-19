@@ -13,3 +13,8 @@ declare module '*.css' {
 	const classNames: IClassNames;
 	export = classNames;
 }
+
+declare module 'corfu-config' {
+	import {Dashboard} from "@wuespace/telestion-client-types";
+	export const corfuDashboards: Dashboard[];
+}
