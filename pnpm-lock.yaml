@@ -28,7 +28,7 @@ specifiers:
   '@wuespace/parcel-reporter-tc-cli': ^0.20.0
   '@wuespace/parcel-resolver-react': ^0.20.0
   '@wuespace/telestion-client-cli': ^0.20.0
-  '@wuespace/telestion-client-common': ^0.20.9
+  '@wuespace/telestion-client-common': ^0.20.10
   '@wuespace/telestion-client-core': ^0.20.1
   '@wuespace/telestion-client-prop-types': ^0.20.0
   '@wuespace/telestion-client-types': ^0.20.0
@@ -56,7 +56,6 @@ dependencies:
   '@spectrum-icons/illustrations': 3.3.0_react@17.0.2
   '@spectrum-icons/ui': 3.3.0_iutk2py5522onlgj4l5sska6u4
   '@spectrum-icons/workflow': 3.2.5_iutk2py5522onlgj4l5sska6u4
-  '@wuespace/telestion-client-common': 0.20.9_iutk2py5522onlgj4l5sska6u4
   '@wuespace/telestion-client-core': 0.20.1_react@17.0.2
   '@wuespace/telestion-client-prop-types': 0.20.0_at7mkepldmzoo6silmqc5bca74
   electron: 18.3.3
@@ -88,6 +87,7 @@ devDependencies:
   '@wuespace/parcel-reporter-tc-cli': 0.20.0_@parcel+core@2.5.0
   '@wuespace/parcel-resolver-react': 0.20.0_@parcel+core@2.5.0
   '@wuespace/telestion-client-cli': 0.20.0
+  '@wuespace/telestion-client-common': 0.20.10_iutk2py5522onlgj4l5sska6u4
   '@wuespace/telestion-client-types': 0.20.0_react@17.0.2
   husky: 7.0.4
   parcel: 2.5.0
@@ -2989,6 +2989,7 @@ packages:
       '@react-spring/shared': 9.4.5_react@17.0.2
       '@react-spring/types': 9.4.5
       react: 17.0.2
+    dev: true
 
   /@react-spring/core/9.4.5_react@17.0.2:
     resolution: {integrity: sha512-83u3FzfQmGMJFwZLAJSwF24/ZJctwUkWtyPD7KYtNagrFeQKUH1I05ZuhmCmqW+2w1KDW1SFWQ43RawqfXKiiQ==}
@@ -3000,9 +3001,11 @@ packages:
       '@react-spring/shared': 9.4.5_react@17.0.2
       '@react-spring/types': 9.4.5
       react: 17.0.2
+    dev: true
 
   /@react-spring/rafz/9.4.5:
     resolution: {integrity: sha512-swGsutMwvnoyTRxvqhfJBtGM8Ipx6ks0RkIpNX9F/U7XmyPvBMGd3GgX/mqxZUpdlsuI1zr/jiYw+GXZxAlLcQ==}
+    dev: true
 
   /@react-spring/shared/9.4.5_react@17.0.2:
     resolution: {integrity: sha512-JhMh3nFKsqyag0KM5IIM8BQANGscTdd0mMv3BXsUiMZrcjQTskyfnv5qxEeGWbJGGar52qr5kHuBHtCjQOzniA==}
@@ -3012,9 +3015,11 @@ packages:
       '@react-spring/rafz': 9.4.5
       '@react-spring/types': 9.4.5
       react: 17.0.2
+    dev: true
 
   /@react-spring/types/9.4.5:
     resolution: {integrity: sha512-mpRIamoHwql0ogxEUh9yr4TP0xU5CWyZxVQeccGkHHF8kPMErtDXJlxyo0lj+telRF35XNihtPTWoflqtyARmg==}
+    dev: true
 
   /@react-spring/web/9.4.5_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha512-NGAkOtKmOzDEctL7MzRlQGv24sRce++0xAY7KlcxmeVkR7LRSGkoXHaIfm9ObzxPMcPHQYQhf3+X9jepIFNHQA==}
@@ -3028,6 +3033,7 @@ packages:
       '@react-spring/types': 9.4.5
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+    dev: true
 
   /@react-stately/checkbox/3.1.0_react@17.0.2:
     resolution: {integrity: sha512-K4c2etj5DCNjvNFP7PaKZxKlRwX/DmpcJzhCQX29jmZJtLsrjsVhLrVNr59NleHbHVsOifF1GwbPlVUKbL5Y0w==}
@@ -3883,6 +3889,7 @@ packages:
 
   /@types/history/4.7.11:
     resolution: {integrity: sha512-qjDJRrmvBMiTx+jyLxvLfJU7UznFuokDv4f3WRuriHKERccVpFU+8XMQUAbDzoiJCsmexxRExQeMwwCdamSKDA==}
+    dev: true
 
   /@types/http-cache-semantics/4.0.1:
     resolution: {integrity: sha512-SZs7ekbP8CN0txVG2xVRH6EgKmEm31BOxA07vkFaETzZz1xh+cbt8BcI0slpymvwhx5dlFnQG2rTlPVQn+iRPQ==}
@@ -3935,6 +3942,7 @@ packages:
     dependencies:
       '@types/history': 4.7.11
       '@types/react': 17.0.45
+    dev: true
 
   /@types/react/17.0.45:
     resolution: {integrity: sha512-YfhQ22Lah2e3CHPsb93tRwIGNiSwkuz1/blk4e6QrWS0jQzCSNbGLtOEYhPg02W0yGTTmpajp7dCTbBAMN3qsg==}
@@ -4005,8 +4013,8 @@ packages:
       - supports-color
     dev: true
 
-  /@wuespace/telestion-client-common/0.20.9_iutk2py5522onlgj4l5sska6u4:
-    resolution: {integrity: sha512-cEPpdv9tQEGk6u1AbBOJRfBhchmmCU4TS/cWOZ7UbAfXQke4RGdNU8os2SnZuAwNI1evnDaHE0m8G17halzvHw==}
+  /@wuespace/telestion-client-common/0.20.10_iutk2py5522onlgj4l5sska6u4:
+    resolution: {integrity: sha512-HHQohgIiiVJ4N8y1oEFaBzZLsyvuKkCjg8xxU2A51+No+6BkMGeXLvLNPWYppxO48TVZxJOVvAxkI9+W+cHA9g==}
     engines: {node: '>=14'}
     peerDependencies:
       react: '>=16.8'
@@ -4041,6 +4049,7 @@ packages:
       - encoding
       - react-dom
       - supports-color
+    dev: true
 
   /@wuespace/telestion-client-core/0.20.1_react@17.0.2:
     resolution: {integrity: sha512-5gc7Fc+TI2xB8IHEkfDu1wrbHU/eVhDrB2h12YyyX+3cA1ZC2ClQH9WeG4hgc1Vs2T9taOJ78HHbTAqrs6wTLw==}
@@ -4086,7 +4095,7 @@ packages:
       '@spectrum-icons/illustrations': 3.3.0_react@17.0.2
       '@spectrum-icons/ui': 3.3.0_iutk2py5522onlgj4l5sska6u4
       '@spectrum-icons/workflow': 3.2.5_iutk2py5522onlgj4l5sska6u4
-      '@wuespace/telestion-client-common': 0.20.9_iutk2py5522onlgj4l5sska6u4
+      '@wuespace/telestion-client-common': 0.20.10_iutk2py5522onlgj4l5sska6u4
       '@wuespace/telestion-client-core': 0.20.1_react@17.0.2
       '@wuespace/telestion-client-prop-types': 0.20.0_at7mkepldmzoo6silmqc5bca74
       electron: 18.3.3
@@ -6727,6 +6736,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.18.3
       react: 17.0.2
+    dev: true
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -6807,6 +6817,7 @@ packages:
       react: '>= 16.8.0'
     dependencies:
       react: 17.0.2
+    dev: true
 
   /react/17.0.2:
     resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}

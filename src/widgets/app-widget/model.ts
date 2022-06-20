@@ -6,6 +6,7 @@ export interface Telecommand extends GenericProps {
 	fields?: {
 		name: string;
 		type: string;
+		value: string | number;
 	}[];
 }
 
