@@ -1,5 +1,5 @@
-import {useBroadcast} from "@wuespace/telestion-client-core";
-import {JsonSerializable} from "@wuespace/telestion-client-types";
+import { JsonSerializable } from "@wuespace/telestion-client-types";
+import { useRequest } from "@wuespace/telestion-client-core";
 
 export interface TelecommandMessage {
 	nodeId: string;
@@ -11,12 +11,8 @@ export interface TelecommandMessage {
 	}
 }
 
-export default function useTelecommand(msg: TelecommandMessage): void {
-	console.log(msg);
-	useBroadcast("telecommand")({
-		nodeId: msg.nodeId,
-		appId: msg.appId,
-		tcId: msg.tcId,
-		fields: msg.fields
-	});
+const TELECOMMAND_ADDRESS = "telecommand";
+
+export default function useTelecommand(): Request {
+	return useRequest<Response>(TELECOMMAND_ADDRESS);
 }

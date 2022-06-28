@@ -9,12 +9,18 @@ import {
 	Header,
 	Heading,
 	Text,
-	Form, NumberField, Flex
+	TableView,
+	TableHeader,
+	TableBody,
+	Column,
+	Row,
+	Cell
 } from "@adobe/react-spectrum";
+
 import Send from "@spectrum-icons/workflow/Send";
-import {useBreakpoints} from "@wuespace/telestion-client-common";
+
+import useTelecommand, {TelecommandMessage} from "../hooks/use-telecommand";
 import {Telecommand} from "../model";
-import {InputField} from "./input-field";
 
 interface TCDialogProps {
 	telecommand: Telecommand;
@@ -22,20 +28,18 @@ interface TCDialogProps {
 	updateTelecommand: (fieldName: string, cmd: string | number) => void;
 }
 
-export function TelecommandDialog({telecommand, msg, updateTelecommand}: TCDialogProps) {
-	const {isMobile} = useBreakpoints();
+export function TelecommandDialog({telecommand, msg, onResult}: TCDialogProps) {
+	const items: TableItem[] = Object.keys(msg.fields)
+		.map((key, index) => ({id: index, name: key, value: msg.fields[key]}));
 
-	const send = (close: () => void) => {
-		useTelecommand(msg);
-		close();
-	}
+	const request = useTelecommand();
 
 	return (
 		<DialogTrigger>
 			<Button
 				variant="cta"
 				width="100%"
-				maxWidth={(isMobile) ? "100%" : "size-1200"}
+				maxWidth="minmax(size-1200, 1fr)"
 			>
 				<Send/>
 				<Text>Send</Text>
@@ -66,7 +70,14 @@ export function TelecommandDialog({telecommand, msg, updateTelecommand}: TCDialo
 					<ButtonGroup>
 						<Button
 							variant="cta"
-							onPress={(close) => send}
+							onPress={() => {
+								console.log(msg);
+								onResult(true);
+								request(msg, response => {
+									onResult(response.result)
+								});
+								close();
+							}}
 						>
 							<Send/>
 							<Text>Confirm</Text>
