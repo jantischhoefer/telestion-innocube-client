@@ -29,6 +29,10 @@ Next, set up pnpm to use the current Verdaccio instance as the main npm registry
 pnpm set registry http://localhost:4873/
 pnpm adduser --registry http://localhost:4873/
 ```
+Additionally, you have to create a `.npmrc` file in your home directory and paste/append the following content into it:
+```
+registry=http://localhost:4873
+```
 
 Now, you have to clone the parcel-resolver-corfu-config repository, which is the package
 that is responsible for reading and parsing the configuration files.
@@ -51,9 +55,24 @@ Here you can take a look at how [path.resolve()](https://nodejs.org/api/path.htm
 Now that this is set up, you can build the project and publish it to your local registry:
 
 ```
+pnpm install
 pnpm build
 pnpm publish --no-git-checks
 ```
+If you get an error like:
+```
+npm ERR! code EPUBLISHCONFLICT
+npm ERR! publish fail Cannot publish over existing version.
+npm ERR! publish fail Update the 'version' field in package.json and try again.
+npm ERR! publish fail 
+npm ERR! publish fail To automatically increment version numbers, see:
+npm ERR! publish fail     npm help version
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/jan/.npm/_logs/2022-06-28T21_41_19_971Z-debug-0.log
+```
+Just increment the version in the package.json of the parcel-resolver-corfu-config and run pnpm publish again.
+
 
 Now let's clone the extended version of the Telestion Client into to the project root folder
 next to the parcel-resolver-corfu-config:
@@ -64,6 +83,7 @@ git checkout feat/responsiveness
 ```
 We also have to build that project and push it to the local registry:
 ```
+pnpm install
 pnpm build
 pnpm publish --no-git-checks --recursive --filter './packages/**/*'
 ```
