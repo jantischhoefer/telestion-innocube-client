@@ -28,15 +28,16 @@ specifiers:
   '@wuespace/parcel-reporter-tc-cli': ^0.20.0
   '@wuespace/parcel-resolver-react': ^0.20.0
   '@wuespace/telestion-client-cli': ^0.20.0
-  '@wuespace/telestion-client-common': ^0.20.10
+  '@wuespace/telestion-client-common': ^0.20.13
   '@wuespace/telestion-client-core': ^0.20.1
   '@wuespace/telestion-client-prop-types': ^0.20.0
   '@wuespace/telestion-client-types': ^0.20.0
+  '@wuespace/vertx-mock-server': ^0.20.0
   electron: ^18.2.0
   electron-devtools-installer: ^3.2.0
   husky: ^7.0.4
   parcel: 2.5.0
-  parcel-resolver-corfu-config: ^0.1.0
+  parcel-resolver-corfu-config: ^0.1.3
   prettier: 2.6.2
   pretty-quick: ^3.1.3
   process: ^0.11.10
@@ -87,11 +88,12 @@ devDependencies:
   '@wuespace/parcel-reporter-tc-cli': 0.20.0_@parcel+core@2.5.0
   '@wuespace/parcel-resolver-react': 0.20.0_@parcel+core@2.5.0
   '@wuespace/telestion-client-cli': 0.20.0
-  '@wuespace/telestion-client-common': 0.20.10_iutk2py5522onlgj4l5sska6u4
+  '@wuespace/telestion-client-common': 0.20.13_iutk2py5522onlgj4l5sska6u4
   '@wuespace/telestion-client-types': 0.20.0_react@17.0.2
+  '@wuespace/vertx-mock-server': 0.20.0_react@17.0.2
   husky: 7.0.4
   parcel: 2.5.0
-  parcel-resolver-corfu-config: 0.1.0_@parcel+core@2.5.0
+  parcel-resolver-corfu-config: 0.1.3_@parcel+core@2.5.0
   prettier: 2.6.2
   pretty-quick: 3.1.3_prettier@2.6.2
   process: 0.11.10
@@ -3959,6 +3961,12 @@ packages:
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
 
+  /@types/sockjs/0.3.33:
+    resolution: {integrity: sha512-f0KEEe05NvUnat+boPTZ0dgaLZ4SfSouXUgv5noUiefG2ajgKjmETo9ZJyuqsl7dfl2aHlLJUiki6B4ZYldiiw==}
+    dependencies:
+      '@types/node': 17.0.42
+    dev: true
+
   /@types/testing-library__jest-dom/5.14.3:
     resolution: {integrity: sha512-oKZe+Mf4ioWlMuzVBaXQ9WDnEm1+umLx0InILg+yvZVBBDmzV5KfZyLrCvadtWcx8+916jLmHafcmqqffl+iIw==}
     dependencies:
@@ -4013,8 +4021,8 @@ packages:
       - supports-color
     dev: true
 
-  /@wuespace/telestion-client-common/0.20.10_iutk2py5522onlgj4l5sska6u4:
-    resolution: {integrity: sha512-HHQohgIiiVJ4N8y1oEFaBzZLsyvuKkCjg8xxU2A51+No+6BkMGeXLvLNPWYppxO48TVZxJOVvAxkI9+W+cHA9g==}
+  /@wuespace/telestion-client-common/0.20.13_iutk2py5522onlgj4l5sska6u4:
+    resolution: {integrity: sha512-gp2zoE0oAc+LydEhYiaSdPd+tnDIzXGYzBNzjrJQE13weZ/gAvqEV2f71BqprYJHxCSAPzyp7Pri2XUbhOBxJg==}
     engines: {node: '>=14'}
     peerDependencies:
       react: '>=16.8'
@@ -4095,7 +4103,7 @@ packages:
       '@spectrum-icons/illustrations': 3.3.0_react@17.0.2
       '@spectrum-icons/ui': 3.3.0_iutk2py5522onlgj4l5sska6u4
       '@spectrum-icons/workflow': 3.2.5_iutk2py5522onlgj4l5sska6u4
-      '@wuespace/telestion-client-common': 0.20.10_iutk2py5522onlgj4l5sska6u4
+      '@wuespace/telestion-client-common': 0.20.13_iutk2py5522onlgj4l5sska6u4
       '@wuespace/telestion-client-core': 0.20.1_react@17.0.2
       '@wuespace/telestion-client-prop-types': 0.20.0_at7mkepldmzoo6silmqc5bca74
       electron: 18.3.3
@@ -4132,6 +4140,19 @@ packages:
       - encoding
       - react
       - supports-color
+
+  /@wuespace/vertx-mock-server/0.20.0_react@17.0.2:
+    resolution: {integrity: sha512-kCmGLHPl5qI2JsqnQmXMkz+/FdO24wmZlw91ZZy4/cLwXt7vjmp7yUb3lal2PUqLUE31dlmdKQsbyg43+7HOWw==}
+    engines: {node: '>=14'}
+    dependencies:
+      '@fliegwerk/logsemts': 0.4.3
+      '@types/sockjs': 0.3.33
+      '@wuespace/telestion-client-types': 0.20.0_react@17.0.2
+      sockjs: 0.3.24
+    transitivePeerDependencies:
+      - encoding
+      - react
+    dev: true
 
   /@xmldom/xmldom/0.7.5:
     resolution: {integrity: sha512-V3BIhmY36fXZ1OtVcI9W+FxQqxVLsPKcNjWigIaa81dLC9IolJl5Mt4Cvhmr0flUnjSpTdrbMTSbXqYqV5dT6A==}
@@ -6442,8 +6463,8 @@ packages:
   /pako/1.0.11:
     resolution: {integrity: sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==}
 
-  /parcel-resolver-corfu-config/0.1.0_@parcel+core@2.5.0:
-    resolution: {integrity: sha512-oYc+S4uNCqaQrKqvyfxn4hOZyQYyDVH2cc4hlqg1nytUDNvrKnDKyb38d08OhdD9DERDBZMvY/9XrUOp7ztCrg==}
+  /parcel-resolver-corfu-config/0.1.3_@parcel+core@2.5.0:
+    resolution: {integrity: sha512-S7ztj2fpN65/yCqn1KUQbheSXoAlhNQiB9m6crM1e6jabZPl/APV8gz87BBeeslkIIFx8UJxKEeu02meV3qyVg==}
     engines: {parcel: 2.x}
     dependencies:
       '@parcel/plugin': 2.6.1_@parcel+core@2.5.0
@@ -7050,6 +7071,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
+  /sockjs/0.3.24:
+    resolution: {integrity: sha512-GJgLTZ7vYb/JtPSSZ10hsOYIvEYsjbNU+zPdIHcUaWVNUEPivzxku31865sSSud0Da0W4lEeOPlmw93zLQchuQ==}
+    dependencies:
+      faye-websocket: 0.11.4
+      uuid: 8.3.2
+      websocket-driver: 0.7.4
+    dev: true
+
   /socks-proxy-agent/6.2.1:
     resolution: {integrity: sha512-a6KW9G+6B3nWZ1yB8G7pJwL3ggLy1uTzKAgCb7ttblwqdz9fMGJUuTy3uFzEP48FAs9FLILlmzDlE2JJhVQaXQ==}
     engines: {node: '>= 10'}
@@ -7379,6 +7408,11 @@ packages:
   /utility-types/3.10.0:
     resolution: {integrity: sha512-O11mqxmi7wMKCo6HKFt5AhO4BwY3VV68YU07tgxfz8zJTIxr4BpsezN49Ffwy9j3ZpwwJp4fkRwjRzq3uWE6Rg==}
     engines: {node: '>= 4'}
+
+  /uuid/8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+    dev: true
 
   /v8-compile-cache/2.3.0:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==}
