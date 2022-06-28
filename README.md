@@ -1,78 +1,101 @@
-# Test Project 2
+# telestion-innocube-client
 
 [![Created using the @wuespace/telestion-client-cli](https://img.shields.io/badge/created%20using-%40wuespace%2Ftelestion--client--cli-%23452897)](https://github.com/wuespace/telestion-client/tree/main/packages/telestion-client-cli)
 
-This Telestion PSC (_Project-Specific Client_) was bootstrapped with the
-[Telestion Client](https://github.com/wuespace/telestion-client) CLI.
+This is the currently working version of the [Telestion Client](https://github.com/wuespace/telestion-client)
+for the InnoCube project.
 
-## Getting started
+This repository is part of the bachelor thesis of Jan Tischhöfer and shows a proof of concept
+how you can automatically generate a Telecommand User Interface from given .yaml configuration files.
+It includes enhancements of the Telestion Client which make it usable on all device sizes.
 
-> **NOTE:** All commands below, unless otherwise specified,
-> should get executed in the cloned project's root folder (that contains the `package.json`) or a subfolder thereof.
+## Preparations
 
-The first step is to install the development dependencies.
-They are defined in `package.json` and you can install them with the following command:
+The following tools are needed to build the Telestion Innocube Client:
 
-```shell script
-npm ci
-```
+- [NodeJS](https://nodejs.org/en/)
+- [pnpm](https://pnpm.io/installation)
 
-## Running
-
-To build and run the project in development mode, execute:
-
-```shell script
-npm start
-```
-
-## Build and deploy
-
-The build command generates a ready-to-deploy web application and native app.
-
-To build the entire project, run:
-
-```shell script
-npm run build
-```
-
-## Project structure
-
-The project structure is like the structure created by `create-react-app` (_CRA_), plus some special structures:
+Also make sure you have [Verdaccio](https://verdaccio.org/) installed and running:
 
 ```
-.
-├── public (static files, cf. CRA documentation)
-│   ├── index.html
-│   ├── favicon.ico
-│   └── [...]
-├── src
-│   ├── components
-│   │   ├── app.tsx (the overall PSC React App)
-│   │   ├── header.tsx (the header component)
-│   │   └── login-page.tsx (the login page)
-│   ├── model
-│   │   └── sample-user-config.ts (the initial user config)
-│   ├── widgets
-│   │   ├── sample-widget (a sample widget included in the template)
-│   │   │   ├── index.ts (widget meta model, including a unique widget name)
-│   │   │   └── widget.tsx (widget component definition)
-│   │   └── index.ts (array of widgets)
-│   ├── index.css
-│   ├── index.tsx
-│   └── [...]
-├── package.json
-├── README.md (you're here :P)
-├── telestion.config.js (configuration of the PSC, such as plugins, etc.)
-└── tsconfig.json (configuration for TypeScript compilation)
+pnpm install -g verdaccio
+verdaccio
 ```
 
-## Learn More
+Next, set up pnpm to use the current Verdaccio instance as the main npm registry:
 
-To get started with PSC Development, you can take a look at the _PSC Developer Manual_. It contains many explanations of the most important concepts, practical guides, references, and more.
+```
+pnpm set registry http://localhost:4873/
+pnpm adduser --registry http://localhost:4873/
+```
 
-You can find the latest versions (in PDF format) in the [Documentation Repo Releases](https://github.com/wuespace/telestion-docs/releases/latest).
+Now, you have to clone the parcel-resolver-corfu-config repository, which is the package
+that is responsible for reading and parsing the configuration files.
+Clone it into your desired root folder for this project setup.
 
-For a full API Reference of all the Telestion Client APIs, check out the documentation of the Telestion Client:
-https://wuespace.github.io/telestion-client/
+```
+git clone git@github.com:jantischhoefer/parcel-resolver-corfu-config.git
+cd parcel-resolver-corfu-config
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Make sure that in `src/resolver.ts` your `pathToConfig` is pointing to the directory where
+your configuration files are located.
+By default, it searches for the `on-board-software-master` directory outside this project.
+If you have access to the repository, simply clone the current InnoCube OnBoard Software master
+[Gitlab Uni Würzburg](https://gitlab2.informatik.uni-wuerzburg.de/innocube/on-board-software/-/tree/master/)
+next to the parcel-resolver-corfu-config and your Telestion Client.
+If you're configuration directory is located somewhere else and is named differently
+you have to change the `path.resolve(...)` command to point to your directory.
+Here you can take a look at how [path.resolve()](https://nodejs.org/api/path.html#pathresolvepaths) works.
+Now that this is set up, you can build the project and publish it to your local registry:
+
+```
+pnpm build
+pnpm publish --no-git-checks
+```
+
+Now let's clone the extended version of the Telestion Client into to the project root folder
+next to the parcel-resolver-corfu-config:
+```
+git clone git@github.com:jantischhoefer/telestion-client.git
+cd telestion-client
+git checkout feat/responsiveness
+```
+We also have to build that project and push it to the local registry:
+```
+pnpm build
+pnpm publish --no-git-checks --recursive --filter './packages/**/*'
+```
+
+After all these steps we have all needed dependencies in our local npm registry.
+
+This is the time when we are able to clone the Project-specific client to our project root folder.
+If you already cloned the Project-specific client just move into the folder and run `pnpm install`.
+Otherwise, clone it first:
+```
+git clone git@github.com:jantischhoefer/telestion-innocube-client.git
+cd telestion-innocube-client
+pnpm install
+```
+After all the dependencies have been installed, we can run the client application.
+```
+pnpm start
+```
+
+To be able to see if our telecommands are sent on a button press we can run a simple mock server that
+listens to the outgoing address for the telecommand messages, logs them to the console and responds to them:
+
+```
+git clone git@github.com:jantischhoefer/mock-server.git
+cd mock-server
+
+pnpm install
+pnpm test
+```
+
+Everything should be set up and running now.
+Feel free to play around in the Telecommand Client, switch the dashboards and send out some Telecommands.
+
+If you find any bugs or can think of additions or improvements open an issue or contact me on GitHub.
+
