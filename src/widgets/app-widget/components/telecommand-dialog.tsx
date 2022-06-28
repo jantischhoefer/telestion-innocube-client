@@ -1,4 +1,3 @@
-import useTelecommand, {TelecommandMessage} from "../hooks/use-telecommand";
 import {
 	Button,
 	ButtonGroup,
@@ -22,10 +21,27 @@ import Send from "@spectrum-icons/workflow/Send";
 import useTelecommand, {TelecommandMessage} from "../hooks/use-telecommand";
 import {Telecommand} from "../model";
 
-interface TCDialogProps {
+export interface TCDialogProps {
 	telecommand: Telecommand;
 	msg: TelecommandMessage;
-	updateTelecommand: (fieldName: string, cmd: string | number) => void;
+	onResult: (result: boolean) => void;
+}
+
+interface TableItem extends Record<string, string | number | boolean> {
+	name: string;
+	value: string | number | boolean;
+}
+
+const columns = [
+	{name: 'Name', uid: 'name'},
+	{name: 'Value', uid: 'value'},
+];
+
+function renderCell(value: string | number | boolean) {
+	switch (typeof value) {
+		case 'boolean': return value ? 'true' : 'false';
+		default: return value;
+	}
 }
 
 export function TelecommandDialog({telecommand, msg, onResult}: TCDialogProps) {
@@ -54,18 +70,18 @@ export function TelecommandDialog({telecommand, msg, onResult}: TCDialogProps) {
 					</Header>
 					<Divider/>
 					<Content>
-						<InputField field={{name: 'timeToExecute', type: 'number'}}
-									updateTelecommand={updateTelecommand}/>
-						<Flex direction="column">
-							{telecommand.fields ?
-								telecommand.fields.map(f => (
-									<Flex id={f.name}>
-										<Text>{f.name}</Text>
-										<Text>{f.value}</Text>
-									</Flex>
-								)) : <></>
-							}
-						</Flex>
+						<TableView>
+							<TableHeader columns={columns}>
+								{column => <Column key={column.uid}>{column.name}</Column>}
+							</TableHeader>
+							<TableBody items={items}>
+								{item => (
+									<Row>
+										{columnKey => <Cell>{renderCell(item[columnKey])}</Cell>}
+									</Row>
+								)}
+							</TableBody>
+						</TableView>
 					</Content>
 					<ButtonGroup>
 						<Button
@@ -82,18 +98,12 @@ export function TelecommandDialog({telecommand, msg, onResult}: TCDialogProps) {
 							<Send/>
 							<Text>Confirm</Text>
 						</Button>
-						<Button
-							variant="secondary"
-							onPress={close}
-						>
+						<Button variant="secondary" onPress={close}>
 							Cancel
 						</Button>
 					</ButtonGroup>
 				</Dialog>
-			)
-
-			}
-
+			)}
 		</DialogTrigger>
 	);
 }

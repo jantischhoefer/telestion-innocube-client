@@ -1,20 +1,16 @@
-import {useState} from "react";
-import {View, Flex, Divider, Text, Heading, Picker, Item} from '@adobe/react-spectrum';
-import {WidgetProps} from './model';
-import {Telecommand} from './components/telecommand';
-import {OverflowFix, useBreakpoints} from "@wuespace/telestion-client-common";
+import {useMemo, useState} from "react";
+import { View, Flex, Divider, Heading, Picker, Item } from '@adobe/react-spectrum';
+import { OverflowFix } from "@wuespace/telestion-client-common";
+
+import { WidgetProps } from './model';
+import { Telecommand } from './components/telecommand';
 
 /**
  * Renders a dynamic app widget containing the configured telecommands.
- *
- * @example
- * ```tsx
- *
- * ```
  */
 export function Widget({nodeId, appId, appName, telecommands}: WidgetProps) {
 	const [tcId, setTcId] = useState(telecommands[0].id);
-	const { isBase, isSm, isMd } = useBreakpoints();
+	const telecommand = useMemo(() => telecommands.filter(t => t.id === tcId)[0], [telecommands, tcId]);
 
 	return (
 		<View width="100%" height="100%" padding="size-200">
@@ -41,18 +37,10 @@ export function Widget({nodeId, appId, appName, telecommands}: WidgetProps) {
 				<Divider size="S"/>
 				<View flex={1}>
 					<OverflowFix>
-						<Telecommand id={tcId} appId={appId} nodeId={nodeId} telecommands={telecommands}/>
+						<Telecommand appId={appId} nodeId={nodeId} telecommand={telecommand}/>
 					</OverflowFix>
 				</View>
 			</Flex>
 		</View>
 	);
 }
-
-/*
-
-*/
-
-/*
-
- */
