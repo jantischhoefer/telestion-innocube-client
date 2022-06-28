@@ -1,13 +1,14 @@
-import { GenericProps } from '@wuespace/telestion-client-types';
+import {GenericProps, JsonSerializable} from '@wuespace/telestion-client-types';
+
+export interface Field extends Record<string, JsonSerializable>{
+	name: string;
+	type: string;
+}
 
 export interface Telecommand extends GenericProps {
 	id: number;
 	name: string;
-	fields?: {
-		name: string;
-		type: string;
-		value: string | number;
-	}[];
+	fields?: Field[];
 }
 
 /**
