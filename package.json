@@ -1,6 +1,6 @@
 {
-	"name": "test-project-2",
-	"description": "Test Project 2, a Telestion PSC generated using the telestion-client-cli",
+	"name": "telestion-innocube-client",
+	"description": "Telestion Innocube Client, a Telestion PSC generated using the telestion-client-cli",
 	"version": "0.0.0",
 	"homepage": ".",
 	"engines": {
